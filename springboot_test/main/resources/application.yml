@@ -1,0 +1,11 @@
+# 测试
+person:
+   name: 张三
+   age: 18
+   isMarry: true
+   pets: [dog,cat,monkey]
+---
+
+
+---
+
