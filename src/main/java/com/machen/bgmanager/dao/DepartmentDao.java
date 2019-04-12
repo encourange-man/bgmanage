@@ -1,6 +1,6 @@
 package com.machen.bgmanager.dao;
 
-import com.machen.bgmanager.entry.Department;
+import com.machen.bgmanager.entity.Department;
 import org.springframework.stereotype.Repository;
 
 import java.util.Collection;

@@ -1,8 +1,11 @@
 package com.machen.bgmanager.controller;
 
+import com.machen.bgmanager.entity.User;
 import com.machen.bgmanager.exception.UserException;
+import com.machen.bgmanager.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,8 +23,11 @@ import java.util.Map;
  */
 @Controller
 public class LoginController {
+    private Logger logger = LoggerFactory.getLogger(LoginController.class);
 
-    private  Logger logger = LoggerFactory.getLogger(LoginController.class);
+    @Autowired
+    private UserService userService;
+
 
     /**
      *  如果@RequestParam中没有username，将会报错
@@ -48,5 +54,11 @@ public class LoginController {
             logger.info(username+"[用户名或密码错误！]");
             return "login";
         }
+    }
+    @RequestMapping("/user/test")
+    @ResponseBody
+    public User testUser(@RequestParam("id")int id){
+        logger.info("testUser param is {}",id);
+        return userService.getUserById(id);
     }
 }

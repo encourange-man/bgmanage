@@ -1,27 +1,20 @@
 package com.machen.bgmanager.config;
-
-/**
- * Demo class
- *
- * @author machen
- * @date 2019-04-01 22:46
- */
-
-import com.machen.bgmanager.component.LoginHandlerInterceptor;
+import com.machen.bgmanager.component.MyLocalResolver;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
- * 自定义mcv config,需要继承WebMvcConfigurer接口
+ *  配置类
+ *  @author machen
+ *  @date 2019-04-01 22:46
  */
 @Configuration
 public class MyMvcConfig implements WebMvcConfigurer {
-
     /**
-     * 添加视图控制，将指定路径的请求转到指定的页面下
-     * 从安全考虑，还需要添加过滤器来过滤，非必须的请求
+     *添加视图映射
      * @param registry
      */
     @Override
@@ -34,14 +27,23 @@ public class MyMvcConfig implements WebMvcConfigurer {
     }
 
     /**
+     * 注册自己的国际化语言解析器
+     */
+    @Bean
+    public LocaleResolver localResolver() {
+        return new MyLocalResolver();
+    }
+
+    /**
      * 注册拦截器
      * @param registry
      */
-    @Override
-    public void addInterceptors(InterceptorRegistry registry) {
-        //拦截所有请求，需要过滤掉访问登录页面的请求
-        registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**")
-                .excludePathPatterns("/","/index.html","/user/login");
-    }
+//    @Override
+//    public void addInterceptors(InterceptorRegistry registry) {
+//        //拦截所有请求，需要过滤掉访问登录页面的请求
+//        registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**")
+//                .excludePathPatterns("/","/index.html","/user/login","/asserts/**,/webjars/**");
+//    }
+
 
 }

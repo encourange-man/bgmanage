@@ -2,8 +2,8 @@ package com.machen.bgmanager.controller;
 
 import com.machen.bgmanager.dao.DepartmentDao;
 import com.machen.bgmanager.dao.EmployeeDao;
-import com.machen.bgmanager.entry.Department;
-import com.machen.bgmanager.entry.Employee;
+import com.machen.bgmanager.entity.Department;
+import com.machen.bgmanager.entity.Employee;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

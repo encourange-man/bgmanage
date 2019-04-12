@@ -17,21 +17,29 @@ import javax.servlet.http.HttpServletResponse;
 public class LoginHandlerInterceptor implements HandlerInterceptor {
     private Logger logger = LoggerFactory.getLogger(LoginHandlerInterceptor.class);
 
-    @Override
-    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-
-        String userId = (String)request.getSession().getAttribute("userId");
-        if(!StringUtils.isEmpty(userId)){
-            //已登录，放行
-           return true;
-        }else{
-            //未登录，返回登录页面
-            request.setAttribute("msg","没有权限请先登录！");
-            request.getRequestDispatcher("/index.html").forward(request,response);
-            logger.info("请求url："+request.getRequestURI()+" ["+request.getAttribute("msg")+"]");
-            return false;
-        }
-    }
+    /**
+     * todo： 放开拦截，最后在加上
+     * @param request
+     * @param response
+     * @param handler
+     * @return
+     * @throws Exception
+     */
+//    @Override
+//    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+//
+//        String userId = (String)request.getSession().getAttribute("userId");
+//        if(!StringUtils.isEmpty(userId)){
+//            //已登录，放行
+//           return true;
+//        }else{
+//            //未登录，返回登录页面
+//            request.setAttribute("msg","没有权限请先登录！");
+//            request.getRequestDispatcher("/index.html").forward(request,response);
+//            logger.info("请求url："+request.getRequestURI()+" ["+request.getAttribute("msg")+"]");
+//            return false;
+//        }
+//    }
 
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {

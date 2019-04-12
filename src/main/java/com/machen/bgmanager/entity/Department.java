@@ -1,4 +1,4 @@
-package com.machen.bgmanager.entry;
+package com.machen.bgmanager.entity;
 
 import lombok.Data;
 

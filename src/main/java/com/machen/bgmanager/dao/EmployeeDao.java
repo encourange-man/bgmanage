@@ -4,8 +4,8 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.machen.bgmanager.entry.Department;
-import com.machen.bgmanager.entry.Employee;
+import com.machen.bgmanager.entity.Department;
+import com.machen.bgmanager.entity.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
